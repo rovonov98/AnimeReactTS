@@ -62,7 +62,7 @@ module.exports = (_, { mode }) => ({
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Anime App',
+            title: 'AnimeApp',
             template: './index.html'
         }),
         new CleanWebpackPlugin(),
