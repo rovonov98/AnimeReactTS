@@ -1,0 +1,4 @@
+body{--content-width: 60%}*{margin:0;padding:0;-webkit-box-sizing:border-box;box-sizing:border-box}@media (max-width: 767px){:root{font-size:calc(10px + 10.2 * ((100vw - 320px) / 1440))}}@media (min-width: 767px){:root{font-size:calc(10px + 6 * (100vw / 1440))}}
+
+
+/*# sourceMappingURL=main.80cbbae044c16e75a8bb.bundle.css.map*/
