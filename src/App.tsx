@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Search from './pages/Search'
 // import { useSelector, useDispatch } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Header from './components/Header'
 
 const App: React.FC = () => {
   // const dispatch = useDispatch()
@@ -11,8 +12,9 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
+      <Header />
         <Switch>
-          <Route exact path="/" component={ Home }/>
+          <Route exact path="/AnimeReactTS/" component={ Home }/>
           <Route path="/search" component={ Search }/>
         </Switch>
       </div>

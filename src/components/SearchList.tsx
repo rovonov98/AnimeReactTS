@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router'
-import { CardType } from './../components/AnimeCard'
+import { CardType } from './../interface'
 import SearchAnimeCard from './../components/SearchAnimeCard'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 
@@ -36,7 +36,6 @@ const SearchList: React.FC = () => {
   let location = useLocation()
   const params = new URLSearchParams(location.search)
   const titleQuery = params.get('title')
-  const deviceWidth = window.innerWidth
   const getAnime = async () => {
     try {
       const res = await fetch(`https://api.jikan.moe/v3/search/anime?q=${titleQuery}`)
