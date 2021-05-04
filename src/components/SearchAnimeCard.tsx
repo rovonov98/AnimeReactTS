@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       fontSize: '1rem',
       padding: '.3rem'
+    },
+    link: {
+      color: 'black',
+      textDecoration: 'none'
     }
   }),
 )
@@ -56,7 +60,12 @@ const SearchAnimeCard: React.FC<Props> = ({ anime }) => {
   return (
     <Card className={ classes.root }>
       <div className={ classes.container }>
-        <a href={ anime.url } target="_blank" rel="noopener noreffer">
+        <a 
+          className={ classes.link }
+          href={ anime.url } 
+          target="_blank" 
+          rel="noopener noreffer"
+        >
           <CardMedia
             className={ classes.media }
             image={ anime.image_url }
@@ -64,7 +73,12 @@ const SearchAnimeCard: React.FC<Props> = ({ anime }) => {
           />
         </a>
         <div>
-        <a href={ anime.url } target="_blank" rel="noopener noreffer">
+        <a
+          className={ classes.link } 
+          href={ anime.url } 
+          target="_blank" 
+          rel="noopener noreffer"
+        >
             <Typography
               className={ classes.title }
               variant="body2"
