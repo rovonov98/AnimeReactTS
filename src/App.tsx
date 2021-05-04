@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <Header />
         <Switch>
           <Route exact path="/AnimeReactTS/" component={ Home }/>
-          <Route path="/search" component={ Search }/>
+          <Route path="/AnimeReactTS/search" component={ Search }/>
         </Switch>
       </div>
     </Router>
