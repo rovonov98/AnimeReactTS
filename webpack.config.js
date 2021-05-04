@@ -14,7 +14,7 @@ module.exports = (_, { mode }) => ({
         filename: 
             mode === 'production'
             ? '[name].[contenthash].bundle.js'
-            : '[name].js'
+            : '[name].bundle.js'
     },
     devtool: 'source-map',
     module: {
@@ -70,7 +70,7 @@ module.exports = (_, { mode }) => ({
             filename: 
                 mode === 'production' 
                 ? '[name].[contenthash].bundle.css'
-                : '[name].css'
+                : '[name].bundle.css'
         })
     ],
 })
