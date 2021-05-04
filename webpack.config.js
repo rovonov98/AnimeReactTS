@@ -10,7 +10,7 @@ module.exports = (_, { mode }) => ({
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/AnimeReactTS/',
+        publicPath: '/',
         filename: 
             mode === 'production'
             ? '[name].[contenthash].bundle.js'
@@ -55,7 +55,9 @@ module.exports = (_, { mode }) => ({
     },
     devServer: {
         port: 3000,
-        historyApiFallback: true
+        historyApiFallback: true,
+        contentBase: './dist',
+        hot: true
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
@@ -63,7 +65,8 @@ module.exports = (_, { mode }) => ({
     plugins: [
         new HtmlWebpackPlugin({
             title: 'AnimeApp',
-            template: './index.html'
+            template: './src/index.html',
+            inject: 'body'
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
