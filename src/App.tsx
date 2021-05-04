@@ -14,8 +14,8 @@ const App: React.FC = () => {
       <div className="App">
       <Header />
         <Switch>
-          <Route exact path="/AnimeReactTS/" component={ Home }/>
-          <Route path="/AnimeReactTS/search" component={ Search }/>
+          <Route exact path="/" component={ Home }/>
+          <Route path="/search" component={ Search }/>
         </Switch>
       </div>
     </Router>
