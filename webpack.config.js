@@ -10,7 +10,7 @@ module.exports = (_, { mode }) => ({
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/',
+        publicPath: '/AnimeReactTS/',
         filename: 
             mode === 'production'
             ? '[name].[contenthash].bundle.js'
