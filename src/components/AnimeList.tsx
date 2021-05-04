@@ -1,9 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import AnimeCard from './AnimeCard'
-import './../assets/scss/AnimeList.scss'
+import { CardType } from './../interface'
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+
+export const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    cardsWrapper: {
+      display: 'flex',
+      justifyContent: 'center'
+    },
+    cards: {
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      margin: '0 auto',
+      maxWidth: '60%'
+    },
+  })
+)
 
 const AnimeList: React.FC = () => {
-  const [animeList, setAnimeList] = useState<Array<any>>([])
+  const classes = useStyles()
+  const [animeList, setAnimeList] = useState<Array<CardType>>([])
   const getAnime = async () => {
     try {
       const response = await fetch(`https://api.jikan.moe/v3/search/anime?q=&order_by=score`)
@@ -11,15 +29,15 @@ const AnimeList: React.FC = () => {
       setAnimeList(data.results)
     }
     catch(err) {
-      console.log(err)
+      console.warn(err)
     }
   }
   useEffect(() => {
     getAnime()
   }, [])
   return (
-    <div className="cards-wrapper">
-      <div className="cards">
+    <div className={ classes.cardsWrapper }>
+      <div className={ classes.cards }>
         {
           animeList.map((anime) => (
             <div

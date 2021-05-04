@@ -35,7 +35,10 @@ module.exports = (_, { mode }) => ({
                     {
                         loader: 'sass-loader',
                         options: {
-                            additionalData: '@import "src/assets/scss/global/variables.scss";',
+                            additionalData: `
+                                @import "src/assets/scss/global/variables.scss";
+                                @import "src/assets/scss/global/mixins.scss";
+                            `,
                         }
                     }
                 ]
@@ -51,14 +54,15 @@ module.exports = (_, { mode }) => ({
         ]
     },
     devServer: {
-        port: 3000
+        port: 3000,
+        historyApiFallback: true
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Webpack ReactTS template',
+            title: 'Anime App',
             template: './index.html'
         }),
         new CleanWebpackPlugin(),

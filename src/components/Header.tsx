@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -7,20 +8,20 @@ import InputBase from '@material-ui/core/InputBase'
 import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
     },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
+    // menuButton: {
+    //   marginRight: theme.spacing(2),
+    //   cursor: 'pointer'
+    // },
     title: {
       flexGrow: 1,
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
-      },
+      display: 'block',
+      cursor: 'pointer',
     },
     search: {
       position: 'relative',
@@ -30,10 +31,9 @@ const useStyles = makeStyles((theme: Theme) =>
         backgroundColor: fade(theme.palette.common.white, 0.25),
       },
       marginLeft: 0,
-      width: '100%',
+      width: 'auto',
       [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
-        width: 'auto',
       },
     },
     searchIcon: {
@@ -53,50 +53,65 @@ const useStyles = makeStyles((theme: Theme) =>
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
+      width: '12ch',
         '&:focus': {
           width: '20ch',
         },
-      },
     },
   }),
 )
 
 const Header: React.FC = () => {
-  const handleSearch = (event: React.FormEvent<HTMLDivElement>): void => {
+  const [search, setSearch] = useState<string>('')
+  const history = useHistory()
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
+    if (search !== '') {
+      history.push(`/search?title=${ search }`)
+    }
   }
-  const classes = useStyles();
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    setSearch(event.target.value)
+  }
+  const goHome = () => {
+    history.push(`/`)
+  }
+  const classes = useStyles()
   return (
-    <div className={classes.root}>
+    <div className={ classes.root }>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
-            className={classes.menuButton}
+            className={ classes.menuButton }
             color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+          </IconButton> */}
+          <Typography 
+            className={ classes.title } 
+            variant="h5" 
+            noWrap
+            onClick={ goHome }
+          >
+            AnimeApp
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
+          <div className={ classes.search }>
+            <div className={ classes.searchIcon }>
               <SearchIcon />
             </div>
-            <InputBase
-              onSubmit={ handleSearch }
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
+            <form onSubmit={ handleSubmit }>
+              <InputBase
+                onChange={ handleChange }
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </form>
           </div>
         </Toolbar>
       </AppBar>

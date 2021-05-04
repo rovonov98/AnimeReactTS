@@ -1,15 +1,22 @@
 import React from 'react'
 import './assets/scss/App.scss'
 import Home from './pages/Home'
-import { useSelector, useDispatch } from 'react-redux'
+import Search from './pages/Search'
+// import { useSelector, useDispatch } from 'react-redux'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 const App: React.FC = () => {
-  const dispatch = useDispatch()
-  const animeList  = useSelector<any>(state => state.animeList)
+  // const dispatch = useDispatch()
+  // const animeList  = useSelector<any>(state => state.animeList)
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={ Home }/>
+          <Route path="/search" component={ Search }/>
+        </Switch>
+      </div>
+    </Router>
   )
 }
 
