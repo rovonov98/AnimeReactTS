@@ -77,6 +77,7 @@ const Header: React.FC = () => {
     history.push(`/`)
   }
   const classes = useStyles()
+  
   return (
     <div className={ classes.root }>
       <AppBar position="static">

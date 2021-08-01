@@ -15,10 +15,8 @@ const useStyles = makeStyles((theme: Theme) =>
     search: {
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
-      // backgroundColor: fade(theme.palette.common.white, 0.15),
       backgroundColor: fade(theme.palette.common.white, 0.9),
       '&:hover': {
-        // backgroundColor: fade(theme.palette.common.white, 0.25),
         backgroundColor: fade(theme.palette.common.white, 1),
       },
       marginLeft: 0,
@@ -57,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 const SearchField: React.FC = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   const [search, setSearch] = useState<string>('')
   const history = useHistory()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -69,16 +67,17 @@ const SearchField: React.FC = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setSearch(event.target.value)
   }
+  
   return (
     <div className={ classes.root }>
       <div className={ classes.search }>
         <div className={ classes.searchIcon }>
           <SearchIcon />
         </div>
-        <form action="" onSubmit={ handleSubmit }>
+        <form action='' onSubmit={ handleSubmit }>
           <InputBase
             onChange={ handleChange }
-            placeholder="Search…"
+            placeholder='Search…'
             classes={{
               root: classes.inputRoot,
               input: classes.inputInput,

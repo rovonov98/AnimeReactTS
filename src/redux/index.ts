@@ -1,13 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { useDispatch } from 'react-redux'
-import rootReducer from './rootReducer'
+import thunk from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux'
+import rootReducer from './reducers/rootReducer'
 
-const store = configureStore({
-  reducer: rootReducer
-  
-})
+let store = createStore(rootReducer, applyMiddleware(thunk))
 
-export type AppDispatch = typeof store.dispatch
-export const useAppDispatch = () => useDispatch<AppDispatch>() 
+export default store       
 
-export default store

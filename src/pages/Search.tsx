@@ -1,9 +1,10 @@
 import React from 'react'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
 import SearchField from './../components/Searchfield'
 import SearchList from './../components/SearchList'
+import Filter from './../components/Filter'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     wrapper: {
       display: 'flex',
@@ -21,6 +22,7 @@ const Search: React.FC = () => {
   return (
     <div>
       <div className={ classes.wrapper }>
+        <Filter />
         <div className={ classes.searchFieldWrapper }>
           <SearchField />
         </div>

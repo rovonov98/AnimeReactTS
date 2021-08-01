@@ -57,14 +57,15 @@ const SearchAnimeCard: React.FC<Props> = ({ anime }) => {
   const handleExpandClick = () => {
     setExpanded(!expanded)
   }
+  
   return (
     <Card className={ classes.root }>
       <div className={ classes.container }>
         <a 
           className={ classes.link }
           href={ anime.url } 
-          target="_blank" 
-          rel="noopener noreffer"
+          target='_blank' 
+          rel='noopener noreffer'
         >
           <CardMedia
             className={ classes.media }
@@ -76,28 +77,28 @@ const SearchAnimeCard: React.FC<Props> = ({ anime }) => {
         <a
           className={ classes.link } 
           href={ anime.url } 
-          target="_blank" 
-          rel="noopener noreffer"
+          target='_blank' 
+          rel='noopener noreffer'
         >
             <Typography
               className={ classes.title }
-              variant="body2"
-              component="p"
+              variant='body2'
+              component='p'
             >
               { anime.title }
             </Typography>
           </a>
           <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               { `${ anime.type } (${ anime.episodes } eps)` }
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               { `Scored ${ anime.score }` }
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               { `Rated ${ anime.rated }` }
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               { `${ anime.members } members` }
             </Typography>
           </CardContent>
@@ -110,12 +111,12 @@ const SearchAnimeCard: React.FC<Props> = ({ anime }) => {
           })}
           onClick={ handleExpandClick }
           aria-expanded={ expanded }
-          aria-label="show more"
+          aria-label='show more'
         >
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={ expanded } timeout="auto" unmountOnExit>
+      <Collapse in={ expanded } timeout='auto' unmountOnExit>
         <CardContent>
           <Typography paragraph>Synopsis:</Typography>
           <Typography paragraph>

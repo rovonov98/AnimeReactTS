@@ -3,7 +3,7 @@ import AnimeList from './../components/AnimeList'
 
 const Home: React.FC = () => {
   return (
-    <div className="Home">
+    <div className='Home'>
       <AnimeList />
     </div>
   )

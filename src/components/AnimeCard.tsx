@@ -1,8 +1,8 @@
 import React from 'react'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { CardType } from './../interface'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     link: {
       color: 'black',
@@ -47,6 +47,7 @@ const AnimeCard: React.FC<Props> = ({ anime }) => {
       return anime.title.split('', titleLength).join('')
     }
   }
+  
   return (
     <a 
       className={ classes.link }

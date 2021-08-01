@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useTypesSelector } from './../hooks/useTypesSelector'
 import AnimeCard from './AnimeCard'
 import { CardType } from './../interface'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
+import apiCall from './../assets/ts/apiCall'
 
-export const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     cardsWrapper: {
       display: 'flex',
@@ -13,33 +16,26 @@ export const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'center',
       flexWrap: 'wrap',
-      margin: '0 auto',
       maxWidth: '60%'
     },
   })
 )
 
 const AnimeList: React.FC = () => {
+  const dispatch = useDispatch()
   const classes = useStyles()
-  const [animeList, setAnimeList] = useState<Array<CardType>>([])
-  const getAnime = async () => {
-    try {
-      const response = await fetch(`https://api.jikan.moe/v3/search/anime?q=&order_by=score`)
-      const data = await response.json()
-      setAnimeList(data.results)
-    }
-    catch(err) {
-      console.warn(err)
-    }
-  }
+  const animeList = useTypesSelector((state) => state.animeList.list)
+  
   useEffect(() => {
-    getAnime()
+    apiCall('')
+      .then((res) => dispatch({ type: 'GET_ANIME_LIST', payload: res }))
   }, [])
+
   return (
     <div className={ classes.cardsWrapper }>
       <div className={ classes.cards }>
         {
-          animeList.map((anime) => (
+          animeList.map((anime: CardType) => (
             <div
               key={ anime.mal_id}
             >
