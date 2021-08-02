@@ -61,7 +61,7 @@ const SearchField: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
     if (search !== '') {
-      history.push(`/search?title=${ search }`)
+      history.push(`/AnimeReactTS/search?title=${ search }`)
     }
   }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
